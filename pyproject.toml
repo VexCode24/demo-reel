@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=75", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "demo-reel"
+version = "0.1.0"
+description = "Build narrated MP4 product demo videos from live web pages"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Marvin Scaff" }]
+keywords = ["demo", "video", "playwright", "tts", "screencast"]
+dependencies = [
+  "httpx>=0.28.0",
+  "pydantic>=2.13.0",
+  "pyyaml>=6.0.0",
+]
+
+[project.optional-dependencies]
+capture = [
+  "playwright>=1.60.0",
+  "edge-tts>=7.2.0",
+]
+dev = [
+  "pytest>=9.0.0",
+  "ruff>=0.15.0",
+]
+
+[project.scripts]
+demo-reel = "demo_reel.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["demo_reel*"]
+
+[tool.setuptools.package-data]
+demo_reel = ["../templates/*", "../skill/*"]
+
+[tool.ruff]
+line-length = 100
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

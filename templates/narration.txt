@@ -1,0 +1,9 @@
+Welcome to your product demo.
+
+Here are the problems you solve for customers. First, describe the primary pain point. Second, the cost or quality gap. Third, why existing tools fall short.
+
+Your solution delivers measurable outcomes: lower cost, faster time to value, and higher trust through transparency.
+
+Watch the live demo on this page — a real API call with a real response, not a mock screenshot.
+
+Thank you for watching.

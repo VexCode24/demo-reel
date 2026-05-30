@@ -1,0 +1,27 @@
+project_name: My Project
+
+server:
+  host: 127.0.0.1
+  port: 8899
+  command:
+    - uvicorn
+    - app.main:app
+    - --host
+    - "127.0.0.1"
+    - --port
+    - "{port}"
+  health_path: /healthz
+  demo_path: /demo?record=1&duration={duration}
+
+narration:
+  file: narration.txt
+  tts: edge
+
+capture:
+  fps: 24
+  viewport_width: 1280
+  viewport_height: 720
+
+output:
+  dir: dist
+  filename: demo.mp4

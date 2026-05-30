@@ -1,0 +1,9 @@
+Welcome to Demo Reel—the toolkit for narrated product demo videos.
+
+Every team ships features but skips the demo video. Manual screen recordings drift from the product. Playwright video capture often looks frozen. Slides are not live.
+
+Demo Reel fixes that with narration synced to seek-based animation. Smooth zoom and scroll. Section highlights. A live API beat with progressive JSON reveal. One command rebuilds the video after every release.
+
+On this page, watch a real POST to slash api slash hello. The response includes telemetry you can attach to release notes.
+
+Install Demo Reel in CI and attach the MP4 to every major release. Thank you for watching.

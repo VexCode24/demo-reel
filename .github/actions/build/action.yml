@@ -1,0 +1,46 @@
+name: Build demo reel video
+description: Build a narrated product demo MP4 and optionally validate it is not static
+
+inputs:
+  config:
+    description: Path to demo-reel.yaml
+    required: true
+    default: demo-reel.yaml
+  tts:
+    description: TTS backend (edge or elevenlabs)
+    required: false
+    default: edge
+  validate:
+    description: Run static-frame validation after build
+    required: false
+    default: "true"
+
+runs:
+  using: composite
+  steps:
+    - name: Install ffmpeg
+      shell: bash
+      run: |
+        if command -v apt-get >/dev/null; then
+          sudo apt-get update && sudo apt-get install -y ffmpeg
+        elif command -v brew >/dev/null; then
+          brew install ffmpeg
+        fi
+
+    - name: Install demo-reel
+      shell: bash
+      run: |
+        pip install "demo-reel[capture] @ git+https://github.com/mdscaff/demo-reel.git@${{ github.action_ref || 'main' }}"
+        python -m playwright install chromium
+
+    - name: Build demo video
+      shell: bash
+      run: |
+        ARGS="--config ${{ inputs.config }}"
+        if [ "${{ inputs.validate }}" = "true" ]; then ARGS="$ARGS --validate"; fi
+        if [ -n "${{ inputs.tts }}" ]; then ARGS="$ARGS --tts ${{ inputs.tts }}"; fi
+        demo-reel build $ARGS
+
+    - name: Show output
+      shell: bash
+      run: ls -lh dist/
