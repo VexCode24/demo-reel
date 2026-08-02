@@ -30,3 +30,14 @@ def test_demo_url_and_health() -> None:
     config.server.port = 9000
     assert "9000" in config.health_url()
     assert "duration=45.00" in config.demo_url(45.0)
+
+
+def test_capture_settle_ms_default_and_override(tmp_path):
+    from demo_reel.config import load_config
+
+    cfg_file = tmp_path / "demo-reel.yaml"
+    cfg_file.write_text("project_name: X\n")
+    assert load_config(cfg_file).capture.settle_ms == 16
+
+    cfg_file.write_text("capture:\n  settle_ms: 120\n")
+    assert load_config(cfg_file).capture.settle_ms == 120

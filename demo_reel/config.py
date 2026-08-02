@@ -36,6 +36,9 @@ class CaptureConfig(BaseModel):
     fps: int = 24
     viewport_width: int = 1280
     viewport_height: int = 720
+    # Per-frame settle delay after seek(t) before the screenshot — raise for pages
+    # whose fonts/images/canvas need longer than one frame to paint.
+    settle_ms: int = 16
 
 
 class OutputConfig(BaseModel):

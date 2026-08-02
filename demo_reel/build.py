@@ -34,7 +34,7 @@ def build_demo(config: DemoReelConfig) -> Path:
     demo_url = config.demo_url(duration)
     proc = start_server(config)
     try:
-        wait_for_health(config.health_url())
+        wait_for_health(config.health_url(), proc=proc)
         print(f"[demo-reel] Recording {demo_url}")
         frames_dir = record_frames(config, duration_s=duration, demo_url=demo_url)
     finally:
