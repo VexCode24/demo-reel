@@ -1,0 +1,39 @@
+name: PR Lens
+
+# Draws every pull request as architecture and data-flow diagrams and posts
+# them as one comment that is redrawn on each push. https://prlens.dev
+#
+# Needs a GEMINI_API_KEY repository secret (the Action's default provider).
+# Without it the job skips instead of failing, so forks and contributors
+# without the key stay green. Corrections live in .github/pr-lens.yml.
+
+on:
+  pull_request:
+
+permissions:
+  contents: write # publish the rendered SVGs to the orphan `pr-lens` branch
+  pull-requests: write # post and update the comment
+
+concurrency: # one run per pull request; a new push supersedes the last
+  group: pr-lens-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  lens:
+    runs-on: ubuntu-latest
+    env:
+      HAS_KEY: ${{ secrets.GEMINI_API_KEY != '' }}
+    steps:
+      - uses: actions/checkout@v4
+        if: env.HAS_KEY == 'true'
+        with:
+          fetch-depth: 0 # the diff is between two commits, so both must be present
+
+      - uses: coldteadotai/pr-lens/packages/action@v0
+        if: env.HAS_KEY == 'true'
+        with:
+          api-key: ${{ secrets.GEMINI_API_KEY }}
+
+      - name: Skipped (no GEMINI_API_KEY)
+        if: env.HAS_KEY != 'true'
+        run: echo "GEMINI_API_KEY is not set for this run; PR Lens skipped."

@@ -1,0 +1,275 @@
+{
+  "schemaVersion": "0.1.1",
+  "kind": "graph",
+  "title": "Demo Reel: how a narrated MP4 gets built",
+  "summary": "One `demo-reel build` run, drawn as the system it touches. The CLI loads demo-reel.yaml, turns narration.txt into an MP3, measures it, boots your app, opens /demo in headless Chromium and screenshots one frame per seek(t), then encodes and muxes with ffmpeg. Nothing here changes: this is the map of the pipeline, drawn with PR Lens so a pull request against it can be read against the same picture.",
+  "lenses": ["architecture", "data-flow"],
+  "provenance": {
+    "repo": { "owner": "mdscaff", "name": "demo-reel", "host": "github.com" },
+    "base": { "sha": "ad9474d", "ref": "main" },
+    "head": { "sha": "ad9474d", "ref": "main" },
+    "generator": { "name": "pr-lens agent skill", "version": "0.4.0" }
+  },
+  "lanes": [
+    { "id": "cli", "label": "demo-reel", "subtitle": "Python CLI · demo_reel/", "order": 0 },
+    { "id": "app", "label": "Your app", "subtitle": "started from demo-reel.yaml", "order": 1 },
+    { "id": "tools", "label": "Tools and services", "subtitle": "ffmpeg · Chromium · TTS", "order": 2 }
+  ],
+  "nodes": [
+    {
+      "id": "cli",
+      "label": "demo-reel CLI",
+      "kind": "app",
+      "delta": "unchanged",
+      "lane": "cli",
+      "subtitle": "build · validate · init · doctor",
+      "summary": "argparse entry point. build is the pipeline; validate, init and doctor are one-step helpers.",
+      "files": [{ "path": "demo_reel/cli.py", "startLine": 1, "endLine": 129 }],
+      "badges": []
+    },
+    {
+      "id": "config",
+      "label": "load_config",
+      "kind": "config",
+      "delta": "unchanged",
+      "lane": "cli",
+      "subtitle": "demo-reel.yaml → DemoReelConfig",
+      "summary": "Pydantic models for server, narration, capture and output. Resolves every path against the config file's directory.",
+      "files": [{ "path": "demo_reel/config.py", "startLine": 1, "endLine": 115 }],
+      "badges": []
+    },
+    {
+      "id": "build",
+      "label": "build_demo",
+      "kind": "function",
+      "delta": "unchanged",
+      "lane": "cli",
+      "subtitle": "the pipeline, in order",
+      "summary": "Narration → duration → server → capture → encode → mux. Stops the server in a finally block so a failed capture never leaves the port bound.",
+      "files": [{ "path": "demo_reel/build.py", "startLine": 11, "endLine": 55 }],
+      "badges": []
+    },
+    {
+      "id": "tts",
+      "label": "synthesize_narration",
+      "kind": "function",
+      "delta": "unchanged",
+      "lane": "cli",
+      "subtitle": "edge (free) or elevenlabs",
+      "summary": "narration.txt in, demo_narration.mp3 out. Edge TTS needs no key; ElevenLabs reads ELEVENLABS_API_KEY from the environment.",
+      "files": [{ "path": "demo_reel/tts.py", "startLine": 1, "endLine": 40 }],
+      "badges": []
+    },
+    {
+      "id": "server-control",
+      "label": "start_server · wait_for_health · stop_server",
+      "kind": "function",
+      "delta": "unchanged",
+      "lane": "cli",
+      "subtitle": "own process group",
+      "summary": "Spawns the app in a new session, polls /healthz and fails fast if the process dies first, then signals the whole process group on the way out so wrapper commands cannot orphan the real server.",
+      "files": [{ "path": "demo_reel/capture.py", "startLine": 15, "endLine": 71 }],
+      "badges": []
+    },
+    {
+      "id": "capture",
+      "label": "record_frames",
+      "kind": "function",
+      "delta": "unchanged",
+      "lane": "cli",
+      "subtitle": "seek(t) per frame",
+      "summary": "Opens /demo?record=1, waits for __demoRecorderReady, then for every frame calls window.__demoRecorder.seek(t), waits settle_ms and takes a PNG screenshot.",
+      "files": [{ "path": "demo_reel/capture.py", "startLine": 74, "endLine": 114 }],
+      "badges": ["24 fps"]
+    },
+    {
+      "id": "ffmpeg-util",
+      "label": "ffmpeg_util",
+      "kind": "module",
+      "delta": "unchanged",
+      "lane": "cli",
+      "subtitle": "probe · encode · mux",
+      "summary": "Thin subprocess wrappers: ffprobe for the narration length, ffmpeg to encode PNGs to H.264, ffmpeg again to mux audio in.",
+      "files": [{ "path": "demo_reel/ffmpeg_util.py", "startLine": 1, "endLine": 85 }],
+      "badges": []
+    },
+    {
+      "id": "validate",
+      "label": "validate_not_static",
+      "kind": "test",
+      "delta": "unchanged",
+      "lane": "cli",
+      "subtitle": "--validate",
+      "summary": "Pulls 4 frames from the finished MP4 and fails the build if they all hash the same: the frozen-video check.",
+      "files": [{ "path": "demo_reel/validate.py", "startLine": 40, "endLine": 53 }],
+      "badges": []
+    },
+    {
+      "id": "healthz",
+      "label": "GET /healthz",
+      "kind": "route",
+      "delta": "unchanged",
+      "lane": "app",
+      "subtitle": "server.health_path",
+      "summary": "Any 200 means the app is up. The example app answers {\"status\": \"ok\"}.",
+      "files": [{ "path": "examples/minimal-fastapi/app.py", "startLine": 12, "endLine": 14 }],
+      "badges": []
+    },
+    {
+      "id": "demo-page",
+      "label": "GET /demo?record=1&duration=N",
+      "kind": "ui",
+      "delta": "unchanged",
+      "lane": "app",
+      "subtitle": "window.__demoRecorder.seek(t)",
+      "summary": "The page contract. It owns the keyframe timeline: pan, zoom, highlights and the live API beat are all a function of t.",
+      "files": [{ "path": "examples/minimal-fastapi/static/demo.html" }],
+      "badges": ["contract"]
+    },
+    {
+      "id": "api-beat",
+      "label": "POST /api/hello",
+      "kind": "route",
+      "delta": "unchanged",
+      "lane": "app",
+      "subtitle": "the live API proof",
+      "summary": "The demo page calls a real endpoint mid-video and types the JSON out. Replace it with the call that proves your product.",
+      "files": [{ "path": "examples/minimal-fastapi/app.py", "startLine": 22, "endLine": 29 }],
+      "badges": []
+    },
+    {
+      "id": "edge-tts",
+      "label": "Edge TTS",
+      "kind": "external",
+      "delta": "unchanged",
+      "lane": "tools",
+      "subtitle": "edge-tts package · free",
+      "summary": "Default voice en-US-GuyNeural. Used in CI because it needs no key.",
+      "files": [],
+      "badges": []
+    },
+    {
+      "id": "elevenlabs",
+      "label": "ElevenLabs",
+      "kind": "external",
+      "delta": "unchanged",
+      "lane": "tools",
+      "subtitle": "api.elevenlabs.io",
+      "summary": "Optional. eleven_multilingual_v2 with a voice id from ELEVENLABS_VOICE_ID.",
+      "files": [],
+      "badges": []
+    },
+    {
+      "id": "chromium",
+      "label": "Headless Chromium",
+      "kind": "external",
+      "delta": "unchanged",
+      "lane": "tools",
+      "subtitle": "Playwright",
+      "summary": "1280×720 viewport by default. Screenshots are taken with animations disabled so every frame is exactly the state seek(t) produced.",
+      "files": [],
+      "badges": []
+    },
+    {
+      "id": "ffmpeg",
+      "label": "ffmpeg / ffprobe",
+      "kind": "external",
+      "delta": "unchanged",
+      "lane": "tools",
+      "subtitle": "on PATH",
+      "summary": "libx264, crf 20, yuv420p for the silent video; aac 192k for the mux.",
+      "files": [],
+      "badges": []
+    }
+  ],
+  "edges": [
+    { "id": "cli-config", "from": "cli", "to": "config", "kind": "call", "delta": "unchanged", "label": "--config", "emphasis": "normal", "animated": false, "files": [] },
+    { "id": "cli-build", "from": "cli", "to": "build", "kind": "call", "delta": "unchanged", "label": "build", "emphasis": "normal", "animated": false, "files": [] },
+    { "id": "cli-validate", "from": "cli", "to": "validate", "kind": "call", "delta": "unchanged", "label": "--validate", "emphasis": "normal", "animated": false, "files": [] },
+    { "id": "build-tts", "from": "build", "to": "tts", "kind": "call", "delta": "unchanged", "label": "narration.txt", "emphasis": "normal", "animated": false, "files": [] },
+    { "id": "build-ffprobe", "from": "build", "to": "ffmpeg-util", "kind": "call", "delta": "unchanged", "label": "probe · encode · mux", "emphasis": "normal", "animated": false, "files": [] },
+    { "id": "build-server", "from": "build", "to": "server-control", "kind": "call", "delta": "unchanged", "label": "start, wait, stop", "emphasis": "normal", "animated": false, "files": [] },
+    { "id": "build-capture", "from": "build", "to": "capture", "kind": "call", "delta": "unchanged", "label": "duration × fps frames", "emphasis": "normal", "animated": false, "files": [] },
+    { "id": "tts-edge", "from": "tts", "to": "edge-tts", "kind": "call", "delta": "unchanged", "label": "default", "emphasis": "normal", "animated": false, "files": [] },
+    { "id": "tts-elevenlabs", "from": "tts", "to": "elevenlabs", "kind": "http", "delta": "unchanged", "label": "POST text-to-speech", "emphasis": "muted", "animated": false, "files": [] },
+    { "id": "server-spawn", "from": "server-control", "to": "healthz", "kind": "http", "delta": "unchanged", "label": "poll until 200", "emphasis": "normal", "animated": false, "files": [] },
+    { "id": "capture-chromium", "from": "capture", "to": "chromium", "kind": "call", "delta": "unchanged", "label": "launch · screenshot", "emphasis": "normal", "animated": false, "files": [] },
+    {
+      "id": "chromium-demo",
+      "from": "chromium",
+      "to": "demo-page",
+      "kind": "render",
+      "delta": "unchanged",
+      "label": "seek(t), one frame at a time",
+      "emphasis": "hero",
+      "animated": true,
+      "summary": "The whole idea in one edge: the recorder never waits for real time to pass. Every frame is a deterministic function of t.",
+      "files": []
+    },
+    { "id": "demo-api", "from": "demo-page", "to": "api-beat", "kind": "http", "delta": "unchanged", "label": "live call mid-video", "emphasis": "normal", "animated": false, "files": [] },
+    { "id": "util-ffmpeg", "from": "ffmpeg-util", "to": "ffmpeg", "kind": "call", "delta": "unchanged", "label": "subprocess", "emphasis": "normal", "animated": false, "files": [] },
+    { "id": "validate-ffmpeg", "from": "validate", "to": "ffmpeg", "kind": "call", "delta": "unchanged", "label": "4 sample frames", "emphasis": "normal", "animated": false, "files": [] }
+  ],
+  "flows": [
+    {
+      "id": "build-run",
+      "title": "One demo-reel build",
+      "summary": "The order things happen in, from narration to a validated MP4.",
+      "delta": "unchanged",
+      "participants": [
+        { "node": "build", "label": "build_demo" },
+        { "node": "tts", "label": "TTS" },
+        { "node": "ffmpeg", "label": "ffmpeg" },
+        { "node": "server-control", "label": "your app" },
+        { "node": "chromium", "label": "Chromium" },
+        { "node": "demo-page", "label": "/demo" }
+      ],
+      "messages": [
+        { "id": "narrate", "from": "build", "to": "tts", "label": "narration.txt → MP3", "kind": "sync", "delta": "unchanged", "animated": true, "files": [] },
+        { "id": "probe", "from": "build", "to": "ffmpeg", "label": "ffprobe duration", "kind": "sync", "delta": "unchanged", "animated": true, "note": "The MP3 length decides the frame count. The video is exactly as long as the voice.", "files": [] },
+        { "id": "boot", "from": "build", "to": "server-control", "label": "start, poll /healthz", "kind": "sync", "delta": "unchanged", "animated": true, "files": [] },
+        { "id": "open", "from": "build", "to": "chromium", "label": "open /demo?record=1&duration=N", "kind": "sync", "delta": "unchanged", "animated": true, "files": [] },
+        { "id": "ready", "from": "demo-page", "to": "chromium", "label": "__demoRecorderReady = true", "kind": "return", "delta": "unchanged", "animated": true, "files": [] },
+        { "id": "seek", "from": "chromium", "to": "demo-page", "label": "seek(t) · screenshot", "kind": "sync", "delta": "unchanged", "animated": true, "repeat": 24, "note": "duration × fps times. A 60-second narration at 24 fps is 1,440 frames.", "files": [] },
+        { "id": "stop", "from": "build", "to": "server-control", "label": "SIGTERM the process group", "kind": "async", "delta": "unchanged", "animated": true, "files": [] },
+        { "id": "encode", "from": "build", "to": "ffmpeg", "label": "PNGs → H.264", "kind": "sync", "delta": "unchanged", "animated": true, "files": [] },
+        { "id": "mux", "from": "build", "to": "ffmpeg", "label": "video + MP3 → demo.mp4", "kind": "sync", "delta": "unchanged", "animated": true, "files": [] },
+        { "id": "check", "from": "build", "to": "ffmpeg", "label": "4 sample frames must differ", "kind": "sync", "delta": "unchanged", "animated": true, "files": [] }
+      ]
+    }
+  ],
+  "stats": {
+    "filesChanged": 0,
+    "additions": 0,
+    "deletions": 0,
+    "chips": [
+      { "label": "Capture", "value": "seek-synced", "tone": "hero" },
+      { "label": "Modules", "value": "7", "tone": "neutral" },
+      { "label": "Contract", "value": "seek(t)", "tone": "neutral" }
+    ]
+  },
+  "views": [
+    {
+      "id": "pipeline",
+      "title": "Architecture — the build pipeline",
+      "lens": "architecture",
+      "summary": "Every module the CLI runs, the two endpoints your app must serve, and the tools on the far side.",
+      "scope": { "kind": "all" },
+      "defaultOpen": true,
+      "children": []
+    },
+    {
+      "id": "build-run-view",
+      "title": "Data flow — one build",
+      "lens": "data-flow",
+      "scope": { "kind": "selection", "lanes": [], "nodes": [], "edges": [], "flows": ["build-run"] },
+      "defaultOpen": false,
+      "children": []
+    }
+  ],
+  "layout": {
+    "direction": "right",
+    "laneOrder": ["cli", "app", "tools"],
+    "rank": { "cli": 0, "build": 1, "capture": 2, "demo-page": 2, "chromium": 3 }
+  }
+}

@@ -112,6 +112,31 @@ Or run `demo-reel init` in your project — it copies the skill to `.cursor/skil
 
 Trigger: *"Build a narrated demo video for this release"* → agent follows `skill/SKILL.md`.
 
+## Pull request diagrams (PR Lens)
+
+Every pull request against this repo gets drawn as animated **architecture** and **data-flow** diagrams by [PR Lens](https://github.com/coldteadotai/pr-lens), posted as one comment that is redrawn on each push. This is the pipeline itself, drawn the same way:
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/diagrams/pipeline.dark.svg">
+  <img alt="Demo Reel architecture: the CLI modules, the two endpoints your app must serve, and ffmpeg, Chromium and TTS on the far side" src="docs/diagrams/pipeline.light.svg">
+</picture>
+
+Three ways it runs here:
+
+| Mode | What it needs | Where |
+|------|---------------|-------|
+| GitHub Action on every PR | a `GEMINI_API_KEY` repository secret (skips cleanly without it) | `.github/workflows/pr-lens.yml` |
+| Coding agent (Claude Code, Cursor, …) | nothing — the agent writes the graph itself | `.claude/skills/pr-lens/` · or `npx skills add coldteadotai/pr-lens` |
+| Locally, before the PR exists | `npx @coldtea/pr-lens-cli render <graph.json>` | `docs/diagrams/*.graph.json` |
+
+Corrections (renames, lane pins, excluded paths) live in `.github/pr-lens.yml` — edit that, never a generated SVG. To redraw the pipeline map after a change:
+
+```bash
+npx @coldtea/pr-lens-cli@latest validate docs/diagrams/pipeline.graph.json
+npx @coldtea/pr-lens-cli@latest render docs/diagrams/pipeline.graph.json --out .pr-lens
+# then copy the pipeline-*.svg / build-run-view-*.svg pair into docs/diagrams/ under their stable names
+```
+
 ## CLI
 
 | Command | Description |
@@ -129,7 +154,7 @@ demo-reel build --config demo-reel.yaml --tts elevenlabs --validate
 
 ## Docs
 
-- [Architecture](docs/architecture.md)
+- [Architecture](docs/architecture.md) — with the [PR Lens pipeline map](docs/diagrams/)
 - [Keyframe authoring](docs/keyframe-authoring.md)
 - [Agent prompt](skill/prompt.md)
 

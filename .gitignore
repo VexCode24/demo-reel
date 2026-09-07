@@ -10,3 +10,6 @@ dist/
 *.mp3
 *.webm
 dist/frames/
+
+# PR Lens scratch output (rebuilt from the diff on demand)
+.pr-lens/

@@ -1,0 +1,21 @@
+# PR Lens corrections — an overlay applied when diagrams are drawn.
+# Inference never writes here, so these keep holding as the code moves.
+# Reference: https://github.com/coldteadotai/pr-lens/blob/main/packages/schema/README.md#repository-config
+schemaVersion: 0.1.1
+lenses: [architecture, data-flow]
+map:
+  exclude:
+    - "tests/**"
+    - "docs/diagrams/**"
+  lane:
+    - match: demo_reel/**
+      lane: demo-reel
+    - match: examples/**
+      lane: example-app
+    - match: .github/**
+      lane: ci
+  rename:
+    - match: demo_reel/ffmpeg_util.py
+      to: ffmpeg wrappers
+    - match: demo_reel/capture.py
+      to: Server control + frame capture

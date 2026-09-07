@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1332 790" width="1332" height="790" role="img" aria-label="Architecture — the build pipeline">
+<title>Architecture — the build pipeline</title>
+<desc>Every module the CLI runs, the two endpoints your app must serve, and the tools on the far side.</desc>
+<style>text{font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif}.lanebox{fill:rgba(255,255,255,.55)}.lanelabel{font-size:10px;font-weight:700;letter-spacing:.12em;fill:#59636e}.card{fill:#ffffff;stroke:#d1d9e0;stroke-width:1}.card-added{stroke:#1f883d;stroke-opacity:.55}.card-modified{stroke:#bf8700;stroke-opacity:.5}.ghost{opacity:.55}.ghost .card{stroke:#cf222e;stroke-dasharray:4 3;stroke-opacity:.6}.context{opacity:.82}.ntitle{font-weight:600;fill:#1f2328}.strike{text-decoration:line-through}.nsub{font-size:9.5px;fill:#59636e;font-family:ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace}.chip{fill:#f1f3f5}.glyph{fill:#59636e}.glyph-stroke{stroke:#59636e;stroke-width:1.4;fill:none}.bdg text{font-size:8.5px;font-weight:700;letter-spacing:.06em}.bdg rect{stroke-width:1}.bdg-added rect{fill:#b9f0c4;stroke:rgba(31,136,61,.55)}.bdg-added text{fill:#116329}.bdg-modified rect{fill:#fae17d;stroke:rgba(154,103,0,.55)}.bdg-modified text{fill:#7d4e00}.bdg-removed rect{fill:#ffcecb;stroke:rgba(207,34,46,.5)}.bdg-removed text{fill:#a40e26}.bdg-neutral rect{fill:#f1f3f5;stroke:#d1d9e0}.bdg-neutral text{fill:#59636e}.edge{fill:none;stroke-width:1.5}.edge-added{stroke:#1f883d}.edge-modified{stroke:#bf8700}.edge-removed{stroke:#cf222e;stroke-dasharray:5 4;opacity:.7}.edge-neutral{stroke:#8c959f}.hero{stroke-width:2.25}.faded{opacity:.45}.glow{fill:none;stroke-width:7;opacity:.14}.msg-self{font-size:11px;fill:#1f2328}.lpill{fill:#ffffff;stroke:#d8dee4;stroke-width:1}.ltext{font-size:9.5px;font-weight:600;fill:#59636e}.ltext-added{fill:#116329}.ltext-modified{fill:#7d4e00}.ltext-removed{fill:#a40e26}.cardsh{filter:drop-shadow(0 1px 2px rgba(31,35,40,.14))}.lifeline{stroke:#d1d9e0;stroke-width:1;stroke-dasharray:3 4}.actbar{fill:#b9f0c4;stroke:rgba(31,136,61,.55)}.msg{fill:none;stroke-width:1.5}.msg-return{stroke-dasharray:4 3;opacity:.8}.msg-strong{stroke-width:2.25}</style>
+<defs><pattern id="dots" width="18" height="18" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r="1" fill="rgba(140,149,159,.5)"/></pattern><marker id="mk-added" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1f883d"/></marker><marker id="mko-added" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M2,1 L10,5 L2,9" fill="none" stroke="#1f883d" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="mk-modified" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#bf8700"/></marker><marker id="mko-modified" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M2,1 L10,5 L2,9" fill="none" stroke="#bf8700" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="mk-removed" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#cf222e"/></marker><marker id="mko-removed" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M2,1 L10,5 L2,9" fill="none" stroke="#cf222e" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="mk-neutral" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8c959f"/></marker><marker id="mko-neutral" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M2,1 L10,5 L2,9" fill="none" stroke="#8c959f" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect x="0" y="0" width="1332" height="790" rx="12" fill="#f4f5f7"/>
+<rect x="0" y="0" width="1332" height="790" rx="12" fill="url(#dots)"/>
+<g transform="translate(18,0)"><g><rect class="lanebox" x="16" y="44" width="404" height="730" rx="12"/>
+<text class="lanelabel" x="32" y="68">DEMO-REEL · PYTHON CLI · DEMO_REEL/</text>
+<rect class="lanebox" x="460" y="44" width="404" height="730" rx="12"/>
+<text class="lanelabel" x="476" y="68">YOUR APP · STARTED FROM DEMO-REEL.YAML</text>
+<rect class="lanebox" x="894" y="44" width="404" height="730" rx="12"/>
+<text class="lanelabel" x="910" y="68">TOOLS AND SERVICES · FFMPEG · CHROMIUM · TTS</text></g>
+<g><path class="edge edge-neutral context" d="M218,154 L218,175 C218,186.6 208.6,196 197,196 L127,196 C124.24,196 122,198.24 122,201 L122,206" marker-end="url(#mk-neutral)"/>
+<path class="edge edge-neutral context" d="M218,154 L218,167 C218,174.18 212.18,180 205,180 L32,180 C13.22,180 -2,195.22 -2,214 L-2,334 C-2,343.39 5.61,351 15,351 L32,351" marker-end="url(#mk-neutral)"/>
+<path class="edge edge-neutral context" d="M218,154 L218,159 C218,161.76 220.24,164 223,164 L293,164 C304.6,164 314,173.4 314,185 L314,206" marker-end="url(#mk-neutral)"/>
+<path class="edge edge-neutral context" d="M218,382 L218,385 C218,386.66 219.34,388 221,388 L386,388 C404.78,388 420,403.22 420,422 L420,585 C420,589.42 416.42,593 412,593 L404,593" marker-end="url(#mk-neutral)"/>
+<path class="edge edge-neutral context" d="M218,382 L218,405 C218,417.7 207.7,428 195,428 L48,428 C29.22,428 14,443.22 14,462 L14,600 C14,604.97 18.03,609 23,609 L32,609" marker-end="url(#mk-neutral)"/>
+<path class="edge edge-neutral context" d="M218,382 L218,410 C218,425.46 205.46,438 190,438 L125,438 C123.34,438 122,439.34 122,441 L122,444" marker-end="url(#mk-neutral)"/>
+<path class="edge edge-neutral context" d="M218,382 L218,390 C218,394.42 221.58,398 226,398 L291,398 C303.7,398 314,408.3 314,421 L314,444" marker-end="url(#mk-neutral)"/>
+<path class="edge edge-neutral context" d="M404,609 L437,609 C455.23,609 470,594.23 470,576 L470,566 C470,547.22 485.22,532 504,532 L855.5,532 C871.24,532 884,519.24 884,503.5 L884,488 C884,480.82 889.82,475 897,475 L910,475" marker-end="url(#mk-neutral)"/>
+<path class="edge edge-neutral faded context" d="M404,625 L427.5,625 C434.4,625 440,630.6 440,637.5 C440,644.4 445.6,650 452.5,650 L873.5,650 C884.82,650 894,640.82 894,629.5 L894,617 C894,612.58 897.58,609 902,609 L910,609" marker-end="url(#mk-neutral)"/>
+<path class="edge edge-neutral context" d="M122,506 L122,509 C122,510.66 123.34,512 125,512 L441.5,512 C451.72,512 460,503.72 460,493.5 L460,483 C460,478.58 463.58,475 468,475 L476,475" marker-end="url(#mk-neutral)"/>
+<path class="edge edge-neutral context" d="M404,475 L417,475 C424.18,475 430,480.82 430,488 L430,508.5 C430,527 445,542 463.5,542 L854,542 C859.52,542 864,546.48 864,552 C864,557.52 868.48,562 874,562 L1184,562 C1188.42,562 1192,565.58 1192,570 L1192,578" marker-end="url(#mk-neutral)"/>
+<path class="glow" stroke="#8c959f" d="M1192,640 L1192,661 C1192,672.6 1182.6,682 1171,682 L938,682 C919.22,682 904,666.78 904,648 L904,637 C904,621.54 891.46,609 876,609 L848,609"/>
+<path class="edge edge-neutral hero context" d="M1192,640 L1192,661 C1192,672.6 1182.6,682 1171,682 L938,682 C919.22,682 904,666.78 904,648 L904,637 C904,621.54 891.46,609 876,609 L848,609" marker-end="url(#mk-neutral)"/>
+<circle r="3" fill="#8c959f"><animateMotion dur="2.1s" repeatCount="indefinite" path="M1192,640 L1192,661 C1192,672.6 1182.6,682 1171,682 L938,682 C919.22,682 904,666.78 904,648 L904,637 C904,621.54 891.46,609 876,609 L848,609"/></circle>
+<circle r="3" fill="#8c959f"><animateMotion dur="2.1s" begin="-1.4s" repeatCount="indefinite" path="M1192,640 L1192,661 C1192,672.6 1182.6,682 1171,682 L938,682 C919.22,682 904,666.78 904,648 L904,637 C904,621.54 891.46,609 876,609 L848,609"/></circle>
+<circle r="3" fill="#8c959f"><animateMotion dur="2.1s" begin="-0.7s" repeatCount="indefinite" path="M1192,640 L1192,661 C1192,672.6 1182.6,682 1171,682 L938,682 C919.22,682 904,666.78 904,648 L904,637 C904,621.54 891.46,609 876,609 L848,609"/></circle>
+<path class="edge edge-neutral context" d="M662,640 L662,692" marker-end="url(#mk-neutral)"/>
+<path class="edge edge-neutral context" d="M122,578 L122,550 C122,534.54 134.54,522 150,522 L435,522 C443.28,522 450,528.72 450,537 C450,545.28 456.72,552 465,552 L864,552 C869.52,552 874,556.48 874,562 C874,567.52 878.48,572 884,572 L1159,572 C1177.23,572 1192,557.23 1192,539 L1192,506" marker-end="url(#mk-neutral)"/>
+<path class="edge edge-neutral context" d="M404,237 L407,237 C408.66,237 410,238.34 410,240 L410,374 C410,392.78 425.22,408 444,408 L849,408 C851.76,408 854,410.24 854,413 C854,415.76 856.24,418 859,418 L1179,418 C1186.18,418 1192,423.82 1192,431 L1192,444" marker-end="url(#mk-neutral)"/></g>
+<g><g class="cardsh context"><rect class="card" x="32" y="92" width="372" height="62" rx="10"/>
+<rect class="chip" x="46" y="110" width="26" height="26" rx="7"/><g><rect class="glyph-stroke" x="52" y="117" width="14" height="12" rx="2"/>
+<path class="glyph-stroke" d="M52,121 h14"/></g>
+<text class="ntitle" x="82" y="119" font-size="13">demo-reel CLI</text>
+<text class="nsub" x="82" y="137">build · validate · init · doctor</text></g>
+<g class="cardsh context"><rect class="card" x="32" y="206" width="180" height="62" rx="10"/>
+<rect class="chip" x="46" y="224" width="26" height="26" rx="7"/><g><path class="glyph-stroke" d="M52,233 h14"/>
+<path class="glyph-stroke" d="M52,241 h14"/>
+<circle class="glyph" cx="57" cy="233" r="2.2"/>
+<circle class="glyph" cx="62" cy="241" r="2.2"/></g>
+<text class="ntitle" x="82" y="233" font-size="11.5">load_config</text>
+<text class="nsub" x="82" y="251">demo-reel.yaml → De…</text></g>
+<g class="cardsh context"><rect class="card" x="224" y="206" width="180" height="62" rx="10"/>
+<rect class="chip" x="238" y="224" width="26" height="26" rx="7"/><g><path class="glyph-stroke" d="M245,237 l4,4 l8,-8"/></g>
+<text class="ntitle" x="274" y="233" font-size="11.5">validate_not_static</text>
+<text class="nsub" x="274" y="251">--validate</text></g>
+<g class="cardsh context"><rect class="card" x="32" y="320" width="372" height="62" rx="10"/>
+<rect class="chip" x="46" y="338" width="26" height="26" rx="7"/><g><text class="glyph" x="59" y="355.5" text-anchor="middle" style="font-size:14px;font-style:italic;font-family:Georgia,serif">ƒ</text></g>
+<text class="ntitle" x="82" y="347" font-size="13">build_demo</text>
+<text class="nsub" x="82" y="365">the pipeline, in order</text></g>
+<g class="cardsh context"><rect class="card" x="32" y="444" width="180" height="62" rx="10"/>
+<rect class="chip" x="46" y="462" width="26" height="26" rx="7"/><g><text class="glyph" x="59" y="479.5" text-anchor="middle" style="font-size:14px;font-style:italic;font-family:Georgia,serif">ƒ</text></g>
+<text class="ntitle" x="82" y="471" font-size="10.5">start_server · wait_fo…</text>
+<text class="nsub" x="82" y="489">own process group</text></g>
+<g class="cardsh context"><rect class="card" x="224" y="444" width="180" height="62" rx="10"/>
+<rect class="chip" x="238" y="462" width="26" height="26" rx="7"/><g><text class="glyph" x="251" y="479.5" text-anchor="middle" style="font-size:14px;font-style:italic;font-family:Georgia,serif">ƒ</text></g>
+<text class="ntitle" x="274" y="471" font-size="11.5">record_frames</text>
+<text class="nsub" x="274" y="489">seek(t) per frame</text>
+<g class="bdg bdg-neutral"><rect x="351.4" y="436" width="45.6" height="16" rx="8"/><text x="374.2" y="447" text-anchor="middle">24 fps</text></g></g>
+<g class="cardsh context"><rect class="card" x="32" y="578" width="180" height="62" rx="10"/>
+<rect class="chip" x="46" y="596" width="26" height="26" rx="7"/><g><text class="glyph" x="59" y="613.5" text-anchor="middle" style="font-size:11px;font-family:ui-monospace, SFMono-Regular, &quot;SF Mono&quot;, Menlo, Consolas, monospace">{ }</text></g>
+<text class="ntitle" x="82" y="605" font-size="11.5">ffmpeg_util</text>
+<text class="nsub" x="82" y="623">probe · encode · mux</text></g>
+<g class="cardsh context"><rect class="card" x="224" y="578" width="180" height="62" rx="10"/>
+<rect class="chip" x="238" y="596" width="26" height="26" rx="7"/><g><text class="glyph" x="251" y="613.5" text-anchor="middle" style="font-size:14px;font-style:italic;font-family:Georgia,serif">ƒ</text></g>
+<text class="ntitle" x="274" y="605" font-size="11.5">synthesize_narration</text>
+<text class="nsub" x="274" y="623">edge (free) or elev…</text></g>
+<g class="cardsh context"><rect class="card" x="476" y="444" width="372" height="62" rx="10"/>
+<rect class="chip" x="490" y="462" width="26" height="26" rx="7"/><g><path class="glyph" d="M496,469 L510,475 L496,481 Z"/></g>
+<text class="ntitle" x="526" y="471" font-size="13">GET /healthz</text>
+<text class="nsub" x="526" y="489">server.health_path</text></g>
+<g class="cardsh context"><rect class="card" x="476" y="578" width="372" height="62" rx="10"/>
+<rect class="chip" x="490" y="596" width="26" height="26" rx="7"/><g><rect class="glyph-stroke" x="496" y="603" width="14" height="12" rx="2"/>
+<path class="glyph-stroke" d="M500.5,603 v12"/></g>
+<text class="ntitle" x="526" y="605" font-size="13">GET /demo?record=1&amp;duration=N</text>
+<text class="nsub" x="526" y="623">window.__demoRecorder.seek(t)</text>
+<g class="bdg bdg-neutral"><rect x="786.87" y="570" width="54.13" height="16" rx="8"/><text x="813.94" y="581" text-anchor="middle">contract</text></g></g>
+<g class="cardsh context"><rect class="card" x="476" y="692" width="372" height="62" rx="10"/>
+<rect class="chip" x="490" y="710" width="26" height="26" rx="7"/><g><path class="glyph" d="M496,717 L510,723 L496,729 Z"/></g>
+<text class="ntitle" x="526" y="719" font-size="13">POST /api/hello</text>
+<text class="nsub" x="526" y="737">the live API proof</text></g>
+<g class="cardsh context"><rect class="card" x="910" y="444" width="180" height="62" rx="10"/>
+<rect class="chip" x="924" y="462" width="26" height="26" rx="7"/><g><rect class="glyph-stroke" x="929" y="469" width="16" height="12" rx="2"/>
+<path class="glyph-stroke" d="M929,471 l8,6 8,-6"/></g>
+<text class="ntitle" x="960" y="471" font-size="11.5">Edge TTS</text>
+<text class="nsub" x="960" y="489">edge-tts package ·…</text></g>
+<g class="cardsh context"><rect class="card" x="1102" y="444" width="180" height="62" rx="10"/>
+<rect class="chip" x="1116" y="462" width="26" height="26" rx="7"/><g><rect class="glyph-stroke" x="1121" y="469" width="16" height="12" rx="2"/>
+<path class="glyph-stroke" d="M1121,471 l8,6 8,-6"/></g>
+<text class="ntitle" x="1152" y="471" font-size="11.5">ffmpeg / ffprobe</text>
+<text class="nsub" x="1152" y="489">on PATH</text></g>
+<g class="cardsh context"><rect class="card" x="910" y="578" width="180" height="62" rx="10"/>
+<rect class="chip" x="924" y="596" width="26" height="26" rx="7"/><g><rect class="glyph-stroke" x="929" y="603" width="16" height="12" rx="2"/>
+<path class="glyph-stroke" d="M929,605 l8,6 8,-6"/></g>
+<text class="ntitle" x="960" y="605" font-size="11.5">ElevenLabs</text>
+<text class="nsub" x="960" y="623">api.elevenlabs.io</text></g>
+<g class="cardsh context"><rect class="card" x="1102" y="578" width="180" height="62" rx="10"/>
+<rect class="chip" x="1116" y="596" width="26" height="26" rx="7"/><g><rect class="glyph-stroke" x="1121" y="603" width="16" height="12" rx="2"/>
+<path class="glyph-stroke" d="M1121,605 l8,6 8,-6"/></g>
+<text class="ntitle" x="1152" y="605" font-size="11.5">Headless Chromium</text>
+<text class="nsub" x="1152" y="623">Playwright</text></g></g>
+<g><g><rect class="lpill" x="137.22" y="188.5" width="49.57" height="15" rx="7.5"/><text class="ltext" x="162" y="199.5" text-anchor="middle">--config</text></g>
+<g><rect class="lpill" x="97.95" y="172.5" width="37.27" height="15" rx="7.5"/><text class="ltext" x="116.58" y="183.5" text-anchor="middle">build</text></g>
+<g><rect class="lpill" x="229.3" y="156.5" width="57.41" height="15" rx="7.5"/><text class="ltext" x="258" y="167.5" text-anchor="middle">--validate</text></g>
+<g><rect class="lpill" x="268.92" y="380.5" width="69.17" height="15" rx="7.5"/><text class="ltext" x="303.5" y="391.5" text-anchor="middle">narration.txt</text></g>
+<g><rect class="lpill" x="62.96" y="420.5" width="117.08" height="15" rx="7.5"/><text class="ltext" x="121.5" y="431.5" text-anchor="middle">probe · encode · mux</text></g>
+<g><rect class="lpill" x="115.64" y="447.5" width="83.72" height="15" rx="7.5"/><text class="ltext" x="157.5" y="458.5" text-anchor="middle">start, wait, stop</text></g>
+<g><rect class="lpill" x="202.99" y="407.5" width="111.03" height="15" rx="7.5"/><text class="ltext" x="258.5" y="418.5" text-anchor="middle">duration × fps frames</text></g>
+<g><rect class="lpill" x="656.64" y="524.5" width="46.23" height="15" rx="7.5"/><text class="ltext" x="679.75" y="535.5" text-anchor="middle">default</text></g>
+<g><rect class="lpill" x="607.99" y="642.5" width="110.02" height="15" rx="7.5"/><text class="ltext" x="663" y="653.5" text-anchor="middle">POST text-to-speech</text></g>
+<g><rect class="lpill" x="246.99" y="504.5" width="72.53" height="15" rx="7.5"/><text class="ltext" x="283.25" y="515.5" text-anchor="middle">poll until 200</text></g>
+<g><rect class="lpill" x="548.08" y="534.5" width="106.56" height="15" rx="7.5"/><text class="ltext" x="601.36" y="545.5" text-anchor="middle">launch · screenshot</text></g>
+<g><rect class="lpill" x="984.94" y="674.5" width="139.13" height="15" rx="7.5"/><text class="ltext" x="1054.5" y="685.5" text-anchor="middle">seek(t), one frame at a time</text></g>
+<g><rect class="lpill" x="614.28" y="659.5" width="95.45" height="15" rx="7.5"/><text class="ltext" x="662" y="670.5" text-anchor="middle">live call mid-video</text></g>
+<g><rect class="lpill" x="656.64" y="544.5" width="67.49" height="15" rx="7.5"/><text class="ltext" x="690.38" y="555.5" text-anchor="middle">subprocess</text></g>
+<g><rect class="lpill" x="601.29" y="400.5" width="90.43" height="15" rx="7.5"/><text class="ltext" x="646.5" y="411.5" text-anchor="middle">4 sample frames</text></g></g></g>
+</svg>

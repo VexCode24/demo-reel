@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1836 527" width="1836" height="527" role="img" aria-label="Data flow — one build">
+<title>Data flow — one build</title>
+<desc>One `demo-reel build` run, drawn as the system it touches. The CLI loads demo-reel.yaml, turns narration.txt into an MP3, measures it, boots your app, opens /demo in headless Chromium and screenshots one frame per seek(t), then encodes and muxes with ffmpeg. Nothing here changes: this is the map of the pipeline, drawn with PR Lens so a pull request against it can be read against the same picture.</desc>
+<style>text{font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif}.lanebox{fill:rgba(255,255,255,.55)}.lanelabel{font-size:10px;font-weight:700;letter-spacing:.12em;fill:#59636e}.card{fill:#ffffff;stroke:#d1d9e0;stroke-width:1}.card-added{stroke:#1f883d;stroke-opacity:.55}.card-modified{stroke:#bf8700;stroke-opacity:.5}.ghost{opacity:.55}.ghost .card{stroke:#cf222e;stroke-dasharray:4 3;stroke-opacity:.6}.context{opacity:.82}.ntitle{font-weight:600;fill:#1f2328}.strike{text-decoration:line-through}.nsub{font-size:9.5px;fill:#59636e;font-family:ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace}.chip{fill:#f1f3f5}.glyph{fill:#59636e}.glyph-stroke{stroke:#59636e;stroke-width:1.4;fill:none}.bdg text{font-size:8.5px;font-weight:700;letter-spacing:.06em}.bdg rect{stroke-width:1}.bdg-added rect{fill:#b9f0c4;stroke:rgba(31,136,61,.55)}.bdg-added text{fill:#116329}.bdg-modified rect{fill:#fae17d;stroke:rgba(154,103,0,.55)}.bdg-modified text{fill:#7d4e00}.bdg-removed rect{fill:#ffcecb;stroke:rgba(207,34,46,.5)}.bdg-removed text{fill:#a40e26}.bdg-neutral rect{fill:#f1f3f5;stroke:#d1d9e0}.bdg-neutral text{fill:#59636e}.edge{fill:none;stroke-width:1.5}.edge-added{stroke:#1f883d}.edge-modified{stroke:#bf8700}.edge-removed{stroke:#cf222e;stroke-dasharray:5 4;opacity:.7}.edge-neutral{stroke:#8c959f}.hero{stroke-width:2.25}.faded{opacity:.45}.glow{fill:none;stroke-width:7;opacity:.14}.msg-self{font-size:11px;fill:#1f2328}.lpill{fill:#ffffff;stroke:#d8dee4;stroke-width:1}.ltext{font-size:9.5px;font-weight:600;fill:#59636e}.ltext-added{fill:#116329}.ltext-modified{fill:#7d4e00}.ltext-removed{fill:#a40e26}.cardsh{filter:drop-shadow(0 1px 2px rgba(31,35,40,.14))}.lifeline{stroke:#d1d9e0;stroke-width:1;stroke-dasharray:3 4}.actbar{fill:#b9f0c4;stroke:rgba(31,136,61,.55)}.msg{fill:none;stroke-width:1.5}.msg-return{stroke-dasharray:4 3;opacity:.8}.msg-strong{stroke-width:2.25}</style>
+<defs><pattern id="dots" width="18" height="18" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r="1" fill="rgba(140,149,159,.5)"/></pattern><marker id="mk-added" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1f883d"/></marker><marker id="mko-added" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M2,1 L10,5 L2,9" fill="none" stroke="#1f883d" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="mk-modified" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#bf8700"/></marker><marker id="mko-modified" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M2,1 L10,5 L2,9" fill="none" stroke="#bf8700" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="mk-removed" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#cf222e"/></marker><marker id="mko-removed" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M2,1 L10,5 L2,9" fill="none" stroke="#cf222e" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="mk-neutral" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8c959f"/></marker><marker id="mko-neutral" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M2,1 L10,5 L2,9" fill="none" stroke="#8c959f" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect x="0" y="0" width="1836" height="527" rx="12" fill="#f4f5f7"/>
+<rect x="0" y="0" width="1836" height="527" rx="12" fill="url(#dots)"/>
+<g transform="translate(12,10)"><g><rect class="lanebox" x="4" y="6" width="254" height="495" rx="12"/>
+<rect class="lanebox" x="314" y="6" width="254" height="495" rx="12"/>
+<rect class="lanebox" x="624" y="6" width="254" height="495" rx="12"/>
+<rect class="lanebox" x="934" y="6" width="254" height="495" rx="12"/>
+<rect class="lanebox" x="1244" y="6" width="254" height="495" rx="12"/>
+<rect class="lanebox" x="1554" y="6" width="254" height="495" rx="12"/></g>
+<g><line class="lifeline" x1="131" y1="82" x2="131" y2="489"/>
+<line class="lifeline" x1="441" y1="82" x2="441" y2="489"/>
+<rect class="actbar" x="435" y="123" width="12" height="12.67" rx="4"/>
+<line class="lifeline" x1="751" y1="82" x2="751" y2="489"/>
+<rect class="actbar" x="745" y="161" width="12" height="316.67" rx="4"/>
+<line class="lifeline" x1="1061" y1="82" x2="1061" y2="489"/>
+<rect class="actbar" x="1055" y="199" width="12" height="164.67" rx="4"/>
+<line class="lifeline" x1="1371" y1="82" x2="1371" y2="489"/>
+<rect class="actbar" x="1365" y="237" width="12" height="88.67" rx="4"/>
+<line class="lifeline" x1="1681" y1="82" x2="1681" y2="489"/>
+<rect class="actbar" x="1675" y="313" width="12" height="12.67" rx="4"/></g>
+<g><g class="cardsh context"><rect class="card" x="16" y="18" width="230" height="62" rx="10"/>
+<rect class="chip" x="30" y="36" width="26" height="26" rx="7"/><g><text class="glyph" x="43" y="53.5" text-anchor="middle" style="font-size:14px;font-style:italic;font-family:Georgia,serif">ƒ</text></g>
+<text class="ntitle" x="66" y="45" font-size="13">build_demo</text>
+<text class="nsub" x="66" y="63">the pipeline, in order</text></g>
+<g class="cardsh context"><rect class="card" x="326" y="18" width="230" height="62" rx="10"/>
+<rect class="chip" x="340" y="36" width="26" height="26" rx="7"/><g><text class="glyph" x="353" y="53.5" text-anchor="middle" style="font-size:14px;font-style:italic;font-family:Georgia,serif">ƒ</text></g>
+<text class="ntitle" x="376" y="45" font-size="13">TTS</text>
+<text class="nsub" x="376" y="63">edge (free) or elevenlabs</text></g>
+<g class="cardsh context"><rect class="card" x="636" y="18" width="230" height="62" rx="10"/>
+<rect class="chip" x="650" y="36" width="26" height="26" rx="7"/><g><rect class="glyph-stroke" x="655" y="43" width="16" height="12" rx="2"/>
+<path class="glyph-stroke" d="M655,45 l8,6 8,-6"/></g>
+<text class="ntitle" x="686" y="45" font-size="13">ffmpeg</text>
+<text class="nsub" x="686" y="63">on PATH</text></g>
+<g class="cardsh context"><rect class="card" x="946" y="18" width="230" height="62" rx="10"/>
+<rect class="chip" x="960" y="36" width="26" height="26" rx="7"/><g><text class="glyph" x="973" y="53.5" text-anchor="middle" style="font-size:14px;font-style:italic;font-family:Georgia,serif">ƒ</text></g>
+<text class="ntitle" x="996" y="45" font-size="13">your app</text>
+<text class="nsub" x="996" y="63">own process group</text></g>
+<g class="cardsh context"><rect class="card" x="1256" y="18" width="230" height="62" rx="10"/>
+<rect class="chip" x="1270" y="36" width="26" height="26" rx="7"/><g><rect class="glyph-stroke" x="1275" y="43" width="16" height="12" rx="2"/>
+<path class="glyph-stroke" d="M1275,45 l8,6 8,-6"/></g>
+<text class="ntitle" x="1306" y="45" font-size="13">Chromium</text>
+<text class="nsub" x="1306" y="63">Playwright</text></g>
+<g class="cardsh context"><rect class="card" x="1566" y="18" width="230" height="62" rx="10"/>
+<rect class="chip" x="1580" y="36" width="26" height="26" rx="7"/><g><rect class="glyph-stroke" x="1586" y="43" width="14" height="12" rx="2"/>
+<path class="glyph-stroke" d="M1590.5,43 v12"/></g>
+<text class="ntitle" x="1616" y="45" font-size="13">/demo</text>
+<text class="nsub" x="1616" y="63">window.__demoRecorder.seek(t)</text>
+<g class="bdg bdg-neutral"><rect x="1734.87" y="10" width="54.13" height="16" rx="8"/><text x="1761.94" y="21" text-anchor="middle">contract</text></g></g></g>
+<g><path class="msg edge-neutral" d="M131,123 L430,123" marker-end="url(#mk-neutral)"/>
+<circle r="2.6" fill="#8c959f" opacity="0"><animateMotion dur="16s" repeatCount="indefinite" keyPoints="0;0;1;1" keyTimes="0;0;0.0833;1" calcMode="linear" path="M131,123 L430,123"/><animate attributeName="opacity" dur="16s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;0;0.0067;0.0767;0.0833;1"/></circle>
+<path class="msg edge-neutral" d="M131,161 L740,161" marker-end="url(#mk-neutral)"/>
+<circle r="2.6" fill="#8c959f" opacity="0"><animateMotion dur="16s" repeatCount="indefinite" keyPoints="0;0;1;1" keyTimes="0;0.0833;0.1667;1" calcMode="linear" path="M131,161 L740,161"/><animate attributeName="opacity" dur="16s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;0.0833;0.09;0.16;0.1667;1"/></circle>
+<path class="msg edge-neutral" d="M131,199 L1050,199" marker-end="url(#mk-neutral)"/>
+<circle r="2.6" fill="#8c959f" opacity="0"><animateMotion dur="16s" repeatCount="indefinite" keyPoints="0;0;1;1" keyTimes="0;0.1667;0.25;1" calcMode="linear" path="M131,199 L1050,199"/><animate attributeName="opacity" dur="16s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;0.1667;0.1733;0.2433;0.25;1"/></circle>
+<path class="msg edge-neutral" d="M131,237 L1360,237" marker-end="url(#mk-neutral)"/>
+<circle r="2.6" fill="#8c959f" opacity="0"><animateMotion dur="16s" repeatCount="indefinite" keyPoints="0;0;1;1" keyTimes="0;0.25;0.3333;1" calcMode="linear" path="M131,237 L1360,237"/><animate attributeName="opacity" dur="16s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;0.25;0.2567;0.3267;0.3333;1"/></circle>
+<path class="msg edge-neutral msg-return" d="M1681,275 L1382,275" marker-end="url(#mk-neutral)"/>
+<circle r="2.6" fill="#8c959f" opacity="0"><animateMotion dur="16s" repeatCount="indefinite" keyPoints="0;0;1;1" keyTimes="0;0.3333;0.4167;1" calcMode="linear" path="M1681,275 L1382,275"/><animate attributeName="opacity" dur="16s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;0.3333;0.34;0.41;0.4167;1"/></circle>
+<path class="msg edge-neutral" d="M1377,313 L1670,313" marker-end="url(#mk-neutral)"/>
+<circle r="3" fill="#8c959f" opacity="0"><animateMotion dur="16s" repeatCount="indefinite" keyPoints="0;0;1;1" keyTimes="0;0.4167;0.5;1" calcMode="linear" path="M1377,313 L1670,313"/><animate attributeName="opacity" dur="16s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;0.4167;0.4233;0.4933;0.5;1"/></circle>
+<circle r="3" fill="#8c959f" opacity="0"><animateMotion dur="16s" repeatCount="indefinite" keyPoints="0;0;1;1" keyTimes="0;0.5;0.5833;1" calcMode="linear" path="M1377,313 L1670,313"/><animate attributeName="opacity" dur="16s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;0.5;0.5067;0.5767;0.5833;1"/></circle>
+<circle r="3" fill="#8c959f" opacity="0"><animateMotion dur="16s" repeatCount="indefinite" keyPoints="0;0;1;1" keyTimes="0;0.5833;0.6667;1" calcMode="linear" path="M1377,313 L1670,313"/><animate attributeName="opacity" dur="16s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;0.5833;0.59;0.66;0.6667;1"/></circle>
+<path class="msg edge-neutral" d="M131,351 L1050,351" marker-end="url(#mko-neutral)"/>
+<circle r="2.6" fill="#8c959f" opacity="0"><animateMotion dur="16s" repeatCount="indefinite" keyPoints="0;0;1;1" keyTimes="0;0.6667;0.75;1" calcMode="linear" path="M131,351 L1050,351"/><animate attributeName="opacity" dur="16s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;0.6667;0.6733;0.7433;0.75;1"/></circle>
+<path class="msg edge-neutral" d="M131,389 L740,389" marker-end="url(#mk-neutral)"/>
+<circle r="2.6" fill="#8c959f" opacity="0"><animateMotion dur="16s" repeatCount="indefinite" keyPoints="0;0;1;1" keyTimes="0;0.75;0.8333;1" calcMode="linear" path="M131,389 L740,389"/><animate attributeName="opacity" dur="16s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;0.75;0.7567;0.8267;0.8333;1"/></circle>
+<path class="msg edge-neutral" d="M131,427 L740,427" marker-end="url(#mk-neutral)"/>
+<circle r="2.6" fill="#8c959f" opacity="0"><animateMotion dur="16s" repeatCount="indefinite" keyPoints="0;0;1;1" keyTimes="0;0.8333;0.9167;1" calcMode="linear" path="M131,427 L740,427"/><animate attributeName="opacity" dur="16s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;0.8333;0.84;0.91;0.9167;1"/></circle>
+<path class="msg edge-neutral" d="M131,465 L740,465" marker-end="url(#mk-neutral)"/>
+<circle r="2.6" fill="#8c959f" opacity="0"><animateMotion dur="16s" repeatCount="indefinite" keyPoints="0;0;1;1" keyTimes="0;0.9167;1;1" calcMode="linear" path="M131,465 L740,465"/><animate attributeName="opacity" dur="16s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;0.9167;0.9233;0.9933;1;1"/></circle></g>
+<g><g><rect class="lpill" x="229.75" y="115.5" width="101.51" height="15" rx="7.5"/><text class="ltext" x="280.5" y="126.5" text-anchor="middle">narration.txt → MP3</text></g>
+<g><rect class="lpill" x="392.24" y="153.5" width="86.53" height="15" rx="7.5"/><text class="ltext" x="435.5" y="164.5" text-anchor="middle">ffprobe duration</text></g>
+<g><rect class="lpill" x="543.04" y="191.5" width="94.92" height="15" rx="7.5"/><text class="ltext" x="590.5" y="202.5" text-anchor="middle">start, poll /healthz</text></g>
+<g><rect class="lpill" x="659.98" y="229.5" width="171.05" height="15" rx="7.5"/><text class="ltext" x="745.5" y="240.5" text-anchor="middle">open /demo?record=1&amp;duration=N</text></g>
+<g><rect class="lpill" x="1455.64" y="267.5" width="151.72" height="15" rx="7.5"/><text class="ltext" x="1531.5" y="278.5" text-anchor="middle">__demoRecorderReady = true</text></g>
+<g><rect class="lpill" x="1459.65" y="305.5" width="127.71" height="15" rx="7.5"/><text class="ltext" x="1523.5" y="316.5" text-anchor="middle">seek(t) · screenshot ×24</text></g>
+<g><rect class="lpill" x="517.86" y="343.5" width="145.28" height="15" rx="7.5"/><text class="ltext" x="590.5" y="354.5" text-anchor="middle">SIGTERM the process group</text></g>
+<g><rect class="lpill" x="394.82" y="381.5" width="81.36" height="15" rx="7.5"/><text class="ltext" x="435.5" y="392.5" text-anchor="middle">PNGs → H.264</text></g>
+<g><rect class="lpill" x="369.77" y="419.5" width="131.46" height="15" rx="7.5"/><text class="ltext" x="435.5" y="430.5" text-anchor="middle">video + MP3 → demo.mp4</text></g>
+<g><rect class="lpill" x="365.39" y="457.5" width="140.23" height="15" rx="7.5"/><text class="ltext" x="435.5" y="468.5" text-anchor="middle">4 sample frames must differ</text></g></g></g>
+</svg>
