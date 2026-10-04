@@ -5,7 +5,12 @@ from pathlib import Path
 
 from demo_reel.capture import record_frames, start_server, stop_server, wait_for_health
 from demo_reel.config import DemoReelConfig
-from demo_reel.ffmpeg_util import encode_frames, mux_video_audio, probe_duration_seconds, require_ffmpeg
+from demo_reel.ffmpeg_util import (
+    encode_frames,
+    mux_video_audio,
+    probe_duration_seconds,
+    require_ffmpeg,
+)
 from demo_reel.tts import synthesize_narration
 
 

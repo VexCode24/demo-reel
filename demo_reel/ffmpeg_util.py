@@ -49,7 +49,7 @@ def encode_frames(frames_dir: Path, fps: int, out_video: Path) -> None:
         "yuv420p",
         str(out_video),
     ]
-    proc = subprocess.run(cmd, capture_output=True, text=True)
+    proc = subprocess.run(cmd, capture_output=True, text=True, check=False)
     if proc.returncode != 0:
         raise RuntimeError(proc.stderr or proc.stdout)
 
@@ -71,6 +71,6 @@ def mux_video_audio(video: Path, audio: Path, out_mp4: Path) -> None:
         "-shortest",
         str(out_mp4),
     ]
-    proc = subprocess.run(cmd, capture_output=True, text=True)
+    proc = subprocess.run(cmd, capture_output=True, text=True, check=False)
     if proc.returncode != 0:
         raise RuntimeError(proc.stderr or proc.stdout)

@@ -30,7 +30,7 @@ def extract_sample_frames(video: Path, out_dir: Path, count: int = 4) -> list[Pa
             "1",
             str(out),
         ]
-        proc = subprocess.run(cmd, capture_output=True, text=True)
+        proc = subprocess.run(cmd, capture_output=True, text=True, check=False)
         if proc.returncode == 0 and out.is_file():
             paths.append(out)
     return paths

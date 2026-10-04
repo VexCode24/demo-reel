@@ -8,7 +8,7 @@ from pathlib import Path
 
 from demo_reel import __version__
 from demo_reel.build import build_demo
-from demo_reel.config import DemoReelConfig, load_config
+from demo_reel.config import load_config
 from demo_reel.doctor import run_doctor
 from demo_reel.validate import validate_not_static
 

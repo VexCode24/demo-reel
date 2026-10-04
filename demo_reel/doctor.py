@@ -34,6 +34,7 @@ def run_doctor() -> int:
         proc = subprocess.run(
             [sys.executable, "-m", "playwright", "install", "chromium", "--dry-run"],
             capture_output=True,
+            check=False,
             text=True,
         )
         if proc.returncode == 0:

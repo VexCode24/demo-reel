@@ -79,7 +79,7 @@ def record_frames(config: DemoReelConfig, duration_s: float, demo_url: str) -> P
     frames_dir.mkdir(parents=True)
 
     fps = config.capture.fps
-    total_frames = max(1, int(round(duration_s * fps)))
+    total_frames = max(1, round(duration_s * fps))
 
     with sync_playwright() as playwright:
         browser = playwright.chromium.launch(headless=True)
